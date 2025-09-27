@@ -1,0 +1,192 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Light mode (unused by default but kept consistent) */
+  --background: #fff7f3; /* FFF7F3 */
+  --foreground: #1f2937; /* single neutral text */
+
+  --card: #fff7f3; /* same as background for airy surfaces */
+  --card-foreground: #1f2937;
+
+  --popover: #fff7f3;
+  --popover-foreground: #1f2937;
+
+  --primary: #c599b6; /* primary */
+  --primary-foreground: #1f2937; /* dark text for contrast on soft primary */
+
+  --secondary: #fad0c4; /* secondary surface/accent */
+  --secondary-foreground: #1f2937;
+
+  --muted: #fff7f3;
+  --muted-foreground: #1f2937;
+
+  --accent: #e6b2ba; /* accent */
+  --accent-foreground: #1f2937;
+
+  /* keep tokens within palette; map semantics to palette shades */
+  --destructive: #e6b2ba; /* mapped to accent instead of red */
+  --destructive-foreground: #1f2937;
+
+  --border: #fad0c4; /* soft border from palette */
+  --input: #fad0c4;
+  --ring: #e6b2ba;
+
+  /* charts (kept) */
+  --chart-1: #8b5cf6;
+  --chart-2: #06b6d4;
+  --chart-3: #60a5fa;
+  --chart-4: #f59e0b;
+  --chart-5: #10b981;
+
+  /* larger radius */
+  --radius: 1rem;
+
+  /* Sidebar tokens (kept generic) */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #111827;
+  --sidebar-primary: #6366f1;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e5e7eb;
+  --sidebar-accent-foreground: #111827;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #9ca3af;
+
+  /* add success & warning tokens */
+  --success: #10b981; /* emerald-500 */
+  --warning: #f59e0b; /* amber-500 */
+}
+
+.dark {
+  /* deep dark gray background and light foreground per spec */
+  --background: #0a0a0a; /* deep charcoal */
+  --foreground: #f9fafb; /* near-white */
+
+  --card: #1f2937; /* slightly lifted surface */
+  --card-foreground: #f9fafb;
+
+  --popover: #1f2937;
+  --popover-foreground: #f9fafb;
+
+  --primary: #a3e635; /* Electric Green / lime-400 for CTAs, key data */
+  --primary-foreground: #0a0a0a;
+
+  --secondary: #111827; /* neutral dark gray */
+  --secondary-foreground: #f9fafb;
+
+  --muted: #111827;
+  --muted-foreground: #9ca3af;
+
+  --accent: #111827;
+  --accent-foreground: #f9fafb;
+
+  --destructive: #ef4444; /* red for rejections */
+  --destructive-foreground: #ffffff;
+
+  --border: #1f2937;
+  --input: #1f2937;
+  --ring: #a3e635; /* focus ring uses lime */
+
+  /* charts (kept harmonious with dark) */
+  --chart-1: #6366f1;
+  --chart-2: #06b6d4;
+  --chart-3: #60a5fa;
+  --chart-4: #f59e0b;
+  --chart-5: #10b981;
+
+  /* Sidebar */
+  --sidebar: #0f172a;
+  --sidebar-foreground: #f9fafb;
+  --sidebar-primary: #6366f1;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1f2937;
+  --sidebar-accent-foreground: #f9fafb;
+  --sidebar-border: #1f2937;
+  --sidebar-ring: #374151;
+
+  /* success & warning preserved for dark */
+  --success: #22c55e; /* green-500 for approved */
+  --warning: #f97316; /* orange for pending */
+}
+
+@theme inline {
+  /* map Inter font */
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* expose success & warning */
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* smooth transitions globally */
+  :where(button, a, input, textarea, select, div) {
+    @apply transition-colors duration-300;
+  }
+  /* improve focus feedback on inputs to use lime ring */
+  :where(input, textarea, select) {
+    @apply transition-all duration-300;
+  }
+  :where(input, textarea, select):focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--primary) 60%, transparent);
+    border-color: var(--primary);
+  }
+}
+
+@layer utilities {
+  /* utility for subtle glow on hover using primary (lime) */
+  .hover-glow-primary:hover {
+    box-shadow: 0 0 0 1px var(--primary), 0 0 24px 0 color-mix(in oklab, var(--primary) 20%, transparent);
+    transform: translateY(-1px);
+    transition: box-shadow 300ms, transform 300ms;
+  }
+}
