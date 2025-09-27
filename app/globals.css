@@ -185,8 +185,70 @@
 @layer utilities {
   /* utility for subtle glow on hover using primary (lime) */
   .hover-glow-primary:hover {
-    box-shadow: 0 0 0 1px var(--primary), 0 0 24px 0 color-mix(in oklab, var(--primary) 20%, transparent);
+    box-shadow: 0 0 0 1px var(--primary),
+      0 0 24px 0 color-mix(in oklab, var(--primary) 20%, transparent);
     transform: translateY(-1px);
     transition: box-shadow 300ms, transform 300ms;
+  }
+
+  /* Landing page animations */
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .fade-in-up-delay {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+  }
+
+  .gradient-text {
+    background: linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary),
+      color-mix(in oklab, var(--primary) 70%, transparent)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 40%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 10px color-mix(in oklab, var(--primary) 0%, transparent);
   }
 }
