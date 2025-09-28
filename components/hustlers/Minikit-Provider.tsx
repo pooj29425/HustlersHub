@@ -14,19 +14,13 @@ export default function MinikitProvider({ children }: { children: ReactNode }) {
         console.log("MiniKit initialized successfully");
       } catch (error) {
         console.error("Failed to initialize MiniKit:", error);
-        // Still render children even if MiniKit fails to install
-        // This allows the app to work in browsers outside World App
+
         setIsInitialized(true);
       }
     };
 
     initMiniKit();
   }, []);
-
-  // You can add a loading state here if needed
-  // if (!isInitialized) {
-  //   return <div>Initializing...</div>;
-  // }
 
   return <>{children}</>;
 }
