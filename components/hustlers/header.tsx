@@ -1,21 +1,29 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 type HeaderProps = {
-  userType: "worker" | "client"
-  onToggle: (type: "worker" | "client") => void
-  worldIdHash?: string
-  userId?: string
-  verified: boolean
-}
+  userType: "worker" | "client";
+  onToggle: (type: "worker" | "client") => void;
+  worldIdHash?: string;
+  userId?: string;
+  verified: boolean;
+};
 
-export function Header({ userType, onToggle, worldIdHash, userId, verified }: HeaderProps) {
-  const truncatedHash = worldIdHash ? `${worldIdHash.slice(0, 10)}…${worldIdHash.slice(-6)}` : "Not verified"
+export function Header({
+  userType,
+  onToggle,
+  worldIdHash,
+  userId,
+  verified,
+}: HeaderProps) {
+  const truncatedHash = worldIdHash
+    ? `${worldIdHash.slice(0, 10)}…${worldIdHash.slice(-6)}`
+    : "Not verified";
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
@@ -31,7 +39,11 @@ export function Header({ userType, onToggle, worldIdHash, userId, verified }: He
           {verified && (
             <Card className="px-2.5 py-1.5 text-xs bg-secondary/60 border-secondary/40">
               <span className="inline-flex items-center gap-1.5">
-                <CheckIcon className="size-4" style={{ color: "var(--primary)" }} aria-hidden />
+                <CheckIcon
+                  className="size-4"
+                  style={{ color: "var(--primary)" }}
+                  aria-hidden
+                />
                 <span className="sr-only">Status:</span>
                 World ID Verified
               </span>
@@ -45,7 +57,9 @@ export function Header({ userType, onToggle, worldIdHash, userId, verified }: He
               variant="ghost"
               className={cn(
                 "h-8 px-3 rounded-md text-sm transition-all duration-300 hover:scale-[1.01] active:scale-95",
-                userType === "worker" ? "bg-primary text-primary-foreground" : "text-foreground",
+                userType === "worker"
+                  ? "bg-primary text-primary-foreground"
+                  : "text-foreground"
               )}
               onClick={() => onToggle("worker")}
               aria-pressed={userType === "worker"}
@@ -57,7 +71,9 @@ export function Header({ userType, onToggle, worldIdHash, userId, verified }: He
               variant="ghost"
               className={cn(
                 "h-8 px-3 rounded-md text-sm transition-all duration-300 hover:scale-[1.01] active:scale-95",
-                userType === "client" ? "bg-primary text-primary-foreground" : "text-foreground",
+                userType === "client"
+                  ? "bg-primary text-primary-foreground"
+                  : "text-foreground"
               )}
               onClick={() => onToggle("client")}
               aria-pressed={userType === "client"}
@@ -81,7 +97,7 @@ export function Header({ userType, onToggle, worldIdHash, userId, verified }: He
         </p>
       </div>
     </header>
-  )
+  );
 }
 
 function CheckIcon(props: React.ComponentProps<"svg">) {
@@ -93,7 +109,7 @@ function CheckIcon(props: React.ComponentProps<"svg">) {
         clipRule="evenodd"
       />
     </svg>
-  )
+  );
 }
 
 function UserIcon(props: React.ComponentProps<"svg">) {
@@ -101,12 +117,13 @@ function UserIcon(props: React.ComponentProps<"svg">) {
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
       <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5Z" />
     </svg>
-  )
+  );
 }
 function BriefcaseIcon(props: React.ComponentProps<"svg">) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
       <path d="M10 4h4a2 2 0 0 1 2 2v1h3a1 1 0 0 1 1 1v4h-8v1h8v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6h8v-1H4V8a1 1 0 0 1 1-1h3V6a2 2 0 0 1 2-2Zm4 3V6a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v1Z" />
     </svg>
-  )
+  );
 }
+//Changed code
